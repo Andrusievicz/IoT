@@ -1,0 +1,57 @@
+#include <LiquidCrystal.h>
+
+#define buzzer 8
+
+#define tensao A0
+
+#define RS 7
+#define E 6
+#define DB4 5
+#define DB5 4
+#define DB6 3
+#define DB7 2
+
+LiquidCrystal lcd(RS, E, DB4, DB5, DB6, DB7);
+
+
+float medicao_tensao(){
+
+ float medida_v = analogRead(tensao);
+ medida_v = ((float)medida_v / 1023)*4.830;
+  
+  return medida_v;
+}
+
+void setup() {
+ analogReference(DEFAULT);
+  lcd.begin(16,2);
+  Serial.begin(9600);
+}
+
+void loop() {
+  Serial.println(medicao_tensao());
+  lcd.setCursor(0,0);
+  lcd.print("Tensao(V): ");
+  lcd.setCursor(12,0);
+  lcd.print(medicao_tensao());
+  
+  
+ if(medicao_tensao () > 3 && medicao_tensao() < 4.0){
+    lcd.setCursor(0,1);
+    lcd.print("SURTO DE (V)!");
+    
+    tone(buzzer,350);
+    delay(350);
+    noTone(buzzer);
+    delay(350);
+   
+   
+ }else if (medicao_tensao() > 4){
+    lcd.setCursor(0,1);
+    lcd.print("SOBREC.(V)!");
+    tone(buzzer,480);
+    delay(200);
+    noTone(buzzer);
+    delay(200);
+ }
+}

@@ -1,0 +1,24 @@
+Código e Diagrama base para utilização do Display LCD 16x2:
+
+#include <LiquidCrystal.h>
+
+#define RS 7
+#define E 6
+#define DB4 5
+#define DB5 4
+#define DB6 3
+#define DB7 2
+
+LiquidCrystal lcd(RS, E, DB4, DB5, DB6, DB7);
+
+void setup() {
+  lcd.begin(16, 2);
+}
+
+void loop() {
+  lcd.setCursor(2,1);
+  delay(2000);
+  lcd.print("TESTE!");
+  delay(2000);
+  lcd.clear();
+}

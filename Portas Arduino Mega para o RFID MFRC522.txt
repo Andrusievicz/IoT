@@ -1,0 +1,8 @@
+Arduino Mega para o RFID MFRC522:
+
+RST - 9 (Ou qualquer outra digital);
+
+SDA (SS) - Porta Digital 53 
+SCK - Porta Digital 52
+MOSI - Porta Digital 51
+MISO - Porta Digital 50

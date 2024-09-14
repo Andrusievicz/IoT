@@ -1,0 +1,8 @@
+(Sinal digital)
+
+RS, E, DB4, DB5, DB6, DB7
+(7) (6) (5) (4)  (3)  (2)
+
+(alimentação)
+
+GND, VCC, V0, RW, LED+, LED-
